@@ -1,0 +1,72 @@
+[
+  {
+    "text": "«Интервал» so'zi nimani anglatadi?",
+    "options": ["Matn hajmini", "Ikki qator orasidagi masofani", "Harflarning hajmini", "Sahifa rangini"],
+    "answer": 1
+  },
+  {
+    "text": "Word dasturida yangi listga (sahifaga) o'tish uchun qaysi klaviatura tugmalar birikmasi ishlatiladi?",
+    "options": ["Ctrl + N", "Ctrl + Enter", "Ctrl + F", "Ctrl + H"],
+    "answer": 1
+  },
+  {
+    "text": "Hujjat ichidan kerakli so'z yoki ma'lumotni qidirib topish uchun qaysi tugmalar bosiladi?",
+    "options": ["Ctrl + F", "Ctrl + H", "Ctrl + C", "Ctrl + V"],
+    "answer": 0
+  },
+  {
+    "text": "Matn ichidagi biron bir so'zni boshqa so'zga avtomatik almashtirish (Заменить) uchun qaysi qisqartma ishlatiladi?",
+    "options": ["Ctrl + A", "Ctrl + F", "Ctrl + H", "Ctrl + S"],
+    "answer": 2
+  },
+  {
+    "text": "Brauzerda ochiq bo'lgan tablar (sahifalar) o'rtasida tezkor o'tish uchun qaysi tugmalar ishlatiladi?",
+    "options": ["Ctrl + Tab", "Ctrl + Alt", "Shift + Enter", "Ctrl + Shift"],
+    "answer": 0
+  },
+  {
+    "text": "Quyidagilardan qaysi biri rasm formatlari hisoblanadi?",
+    "options": [".docx va .xlsx", ".jpg va .png", ".mp3 va .mp4", ".txt va .pdf"],
+    "answer": 1
+  },
+  {
+    "text": "Qaysi rasm formati asosan foni bor (oq yoki rangli fonli) rasmlar uchun ishlatiladi?",
+    "options": [".png", ".jpg", ".gif", ".zip"],
+    "answer": 1
+  },
+  {
+    "text": "Qaysi rasm formati foni yo'q (shaffof fonli) rasmlar uchun keng qo'llaniladi?",
+    "options": [".jpg", ".png", ".txt", ".exe"],
+    "answer": 1
+  },
+  {
+    "text": "Remove.bg saytining asosiy vazifasi nima?",
+    "options": [
+      "Rasmlarni arxivlash",
+      "Rasm hajmini kichraytirish",
+      "Rasmning fonini avtomatik o'chirish (olib tashlash)",
+      "Rasmni PDF formatiga o'tkazish"
+    ],
+    "answer": 2
+  },
+  {
+    "text": "Agar 100 betlik hujjatdagi xato yozilgan \"Toshkent\" so'zini bir soniyada \"Samarqand\"ga o'zgartirmoqchi bo'lsak, qaysi bo'limdan foydalanamiz?",
+    "options": ["Найти (Qidirish)", "Заменить (Almashtirish)", "Шрифт (Shrift)", "Абзац (Abzas)"],
+    "answer": 1
+  },
+  {
+    "text": "Ctrl + F kompyuterda qanday vazifani bajaradi?",
+    "options": ["Faylni saqlaydi", "Qidirish oynasini ochadi", "Yangi papka ochadi", "Matnni nusxalaydi"],
+    "answer": 1
+  },
+  {
+    "text": "Ctrl + Enter yordamida yangi list ochilganda, matnda qanday o'zgarish yuz beradi?",
+    "options": [
+      "Matn buzilib ketadi",
+      "Yuqoridagi matn o'zgarishidan qat'i nazar, keyingi matn yangi sahifaga ko'chadi",
+      "Faqat qora rangda yozadi",
+      "Hujjat avtomatik o'chib ketadi"
+    ],
+    "answer": 1
+  }
+]
