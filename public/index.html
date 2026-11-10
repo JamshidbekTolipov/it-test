@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT PARK Uzbekistan — Bilim sinovi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <!-- Logotipni public/logo.png nomi bilan shu papkaga qo'ying -->
+      <img id="logo" src="/logo.png" alt="IT PARK Uzbekistan" height="40">
+      <span id="logoText" class="logo-text" hidden>IT PARK Uzbekistan</span>
+    </div>
+    <div id="timer" class="timer" hidden aria-live="off">
+      <span class="timer-label">Qolgan vaqt</span>
+      <span id="timeText" class="timer-time">10:00</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Kirish -->
+    <section id="welcome" class="welcome">
+      <div class="hero">
+        <h1>Bilimingizni 10&nbsp;daqiqada sinab ko'ring</h1>
+        <p class="lead">Word, klaviatura qisqartmalari va rasm formatlari bo'yicha 12 ta savol.</p>
+      </div>
+
+      <form id="startForm" class="card start-card" autocomplete="off">
+        <h2>Boshlashdan oldin</h2>
+        <label>Ism
+          <input id="firstName" name="firstName" type="text" required minlength="2" maxlength="40" placeholder="Masalan: Aziza">
+        </label>
+        <label>Familiya
+          <input id="lastName" name="lastName" type="text" required minlength="2" maxlength="40" placeholder="Masalan: Karimova">
+        </label>
+        <ul class="rules">
+          <li>Vaqt 10 daqiqa. Tugagach test o'zi yakunlanadi.</li>
+          <li>Test faqat bir marta ishlanadi, qayta urinish yo'q.</li>
+          <li>Sahifani yangilasangiz, vaqt va javoblar saqlanib qoladi.</li>
+        </ul>
+        <p id="startError" class="error" role="alert" hidden></p>
+        <button id="startBtn" class="btn" type="submit">Testni boshlash</button>
+      </form>
+    </section>
+
+    <!-- 2. Test -->
+    <section id="test" class="test" hidden>
+      <div class="q-panel card">
+        <div class="q-head">
+          <span id="qCount" class="q-count">Savol 1 / 12</span>
+          <span id="studentName" class="student"></span>
+        </div>
+        <div class="bar"><div id="barFill"></div></div>
+        <h2 id="qText" class="q-text"></h2>
+        <div id="options" class="options" role="radiogroup" aria-labelledby="qText"></div>
+        <div class="q-nav">
+          <button id="prevBtn" class="btn ghost" type="button">Oldingi</button>
+          <button id="nextBtn" class="btn" type="button">Keyingi</button>
+        </div>
+      </div>
+
+      <aside class="side card">
+        <h3>Savollar</h3>
+        <div id="tiles" class="tiles"></div>
+        <p id="answeredInfo" class="answered"></p>
+        <button id="finishBtn" class="btn dark" type="button">Testni yakunlash</button>
+      </aside>
+    </section>
+
+    <!-- 3. Natija -->
+    <section id="result" class="result" hidden>
+      <div class="card result-card">
+        <p id="resName" class="res-name"></p>
+        <div class="score-row">
+          <div id="resScore" class="score-big">0</div>
+          <div class="score-meta">
+            <span id="resOf"></span>
+            <span id="resPercent" class="percent"></span>
+          </div>
+        </div>
+        <p id="resMsg" class="res-msg"></p>
+        <div id="resTiles" class="tiles res-tiles"></div>
+        <p id="resTime" class="res-time"></p>
+        <p class="res-note">Natija saqlandi. Bu test qayta ishlanmaydi.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

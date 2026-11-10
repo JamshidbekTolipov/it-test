@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Natijalar — o'qituvchi uchun</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+    th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+    th { font-family: var(--display); font-weight: 500; font-size: .9rem; }
+    .num { font-weight: 800; font-variant-numeric: tabular-nums; }
+    .small { padding: 6px 12px; font-size: .85rem; }
+    #msg { margin: 12px 0; font-weight: 800; }
+  </style>
+</head>
+<body>
+  <header class="top"><strong class="logo-text">IT PARK Uzbekistan — natijalar</strong></header>
+  <main>
+    <div class="card">
+      <p id="msg"></p>
+      <table>
+        <thead><tr><th>№</th><th>O'quvchi</th><th>Natija</th><th>Vaqt</th><th>Holat</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </main>
+  <script>
+    let key = sessionStorage.getItem('adminKey') || prompt('Admin parolini kiriting:') || '';
+    const $ = s => document.querySelector(s);
+
+    async function load() {
+      const res = await fetch('/api/admin/results', { headers: { 'x-admin-key': key } });
+      if (!res.ok) {
+        sessionStorage.removeItem('adminKey');
+        $('#msg').textContent = "Parol noto'g'ri yoki serverda ADMIN_KEY sozlanmagan.";
+        return;
+      }
+      sessionStorage.setItem('adminKey', key);
+      $('#msg').textContent = '';
+      const { rows } = await res.json();
+      rows.sort((a, b) => (b.score ?? -1) - (a.score ?? -1));
+      const body = $('#rows');
+      body.innerHTML = '';
+      rows.forEach((r, i) => {
+        const tr = document.createElement('tr');
+        const time = r.seconds == null ? '—' : `${Math.floor(r.seconds / 60)}:${String(r.seconds % 60).padStart(2, '0')}`;
+        const cells = [i + 1, r.name, r.score == null ? '—' : `${r.score} / ${r.total}`, time, r.finished ? 'Tugatgan' : 'Ishlayapti'];
+        cells.forEach((c, j) => {
+          const td = document.createElement('td');
+          td.textContent = c;
+          if (j === 2) td.className = 'num';
+          tr.appendChild(td);
+        });
+        const td = document.createElement('td');
+        const b = document.createElement('button');
+        b.className = 'btn ghost small';
+        b.textContent = 'Qayta ishlashga ruxsat';
+        b.onclick = async () => {
+          if (!confirm(`${r.name} natijasi o'chiriladi va u testni qayta ishlay oladi. Davom etasizmi?`)) return;
+          await fetch('/api/admin/reset', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'x-admin-key': key },
+            body: JSON.stringify({ id: r.id })
+          });
+          load();
+        };
+        td.appendChild(b);
+        tr.appendChild(td);
+        body.appendChild(tr);
+      });
+    }
+    load();
+    setInterval(load, 10000);
+  </script>
+</body>
+</html>
